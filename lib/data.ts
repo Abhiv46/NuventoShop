@@ -165,6 +165,15 @@ export const products: Product[] = [
     features:['Comfortable 3-inch block heel','Beautiful embellished ankle strap','Cushioned padded insole','Durable anti-slip outsole','Available in UK sizes 3-8'],
     affiliateUrl:'https://www.myntra.com/REPLACE_WITH_YOUR_LINK', affiliateSource:'myntra', badge:'bestseller', inStock:true,
   },
+  {
+    id:'p017', name:"LIBAS Women Cotton Blend Kurta Palazzo Set", brand:'LIBAS',
+    price:2099, originalPrice:6799, discount:69, rating:4.3, reviews:2730,
+    image:'https://images.unsplash.com/photo-1607189200597-4d0923ef98c6?w=400&q=80',
+    category:'fashion', tags:['kurta','palazzo','ethnic','libas','cotton','festive'],
+    description:'Elegant white ethnic kurta palazzo set in cotton blend with delicate floral embroidery. Perfect for festive occasions and casual ethnic days.',
+    features:['Cotton blend fabric','Floral embroidered detailing','Includes kurta, palazzo & dupatta','Available sizes XS-XXL','Comfortable everyday ethnic wear'],
+    affiliateUrl:'https://fktr.in/jrhr3Lh', affiliateSource:'flipkart', badge:'trending', inStock:true,
+  },
 ];
 
 export const sourceLabels: Record<string, { label: string; color: string }> = {
