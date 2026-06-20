@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
+import ProductImage from '@/components/ProductImage';
 import { getCategoryBySlug, getProductsByCategory, getCategoryProductCount, categories } from '@/lib/data';
 import ProductCard from '@/components/ProductCard';
 import { AdBanner, AdInFeed } from '@/components/AdSense';
@@ -32,7 +32,7 @@ export default function CategoryPage({ params }: Props) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="relative rounded-3xl overflow-hidden mb-8 h-48 sm:h-64">
-        <Image src={cat.image} alt={cat.name} fill className="object-cover" priority />
+        <ProductImage src={cat.image} alt={cat.name} fill className="object-cover" priority />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
         <div className="absolute inset-0 flex items-center px-8">
           <div className="text-white">

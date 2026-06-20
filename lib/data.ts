@@ -33,7 +33,7 @@ export const products: Product[] = [
   {
     id:'p002', name:"Mamaearth Ubtan Face Wash with Turmeric & Saffron 100ml", brand:'Mamaearth',
     price:249, originalPrice:349, discount:29, rating:4.5, reviews:28650,
-    image:'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&q=80',
+    image:'https://images.unsplash.com/photo-1629198726018-604230bdb091?w=400&q=80',
     category:'beauty', tags:['facewash','turmeric','natural','glow','mamaearth'],
     description:'Natural ubtan face wash with turmeric and saffron for a bright glowing complexion. Free from harmful chemicals, perfect for all skin types.',
     features:['Turmeric & Saffron formula','No parabens, SLS-free','Brightens and evens skin tone','Suitable for all skin types','Dermatologically tested'],
@@ -87,7 +87,7 @@ export const products: Product[] = [
   {
     id:'p008', name:"BIBA Women's Anarkali Suit Festive Collection", brand:'BIBA',
     price:1499, originalPrice:2999, discount:50, rating:4.5, reviews:3890,
-    image:'https://images.unsplash.com/photo-1631498236800-ba2b2e6cc0d4?w=400&q=80',
+    image:'https://images.unsplash.com/photo-1743229995505-d6374996df1c?w=400&q=80',
     category:'fashion', tags:['anarkali','ethnic','biba','festive','suit'],
     description:"BIBA's stunning Anarkali suit from the festive collection. Crafted with finest fabric and beautiful block prints for special occasions and celebrations.",
     features:['Festive quality fabric','Beautiful block print design','Flowy flared anarkali silhouette','Includes matching dupatta','Available sizes XS-3XL'],

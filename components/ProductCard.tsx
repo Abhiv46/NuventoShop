@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import ProductImage from './ProductImage';
 import { Star, ExternalLink, Zap } from 'lucide-react';
 import type { Product } from '@/lib/data';
 import { sourceLabels } from '@/lib/data';
@@ -18,7 +18,7 @@ export default function ProductCard({ product, priority = false }: { product: Pr
   return (
     <article className="product-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col h-full">
       <Link href={`/products/${product.id}`} className="relative block overflow-hidden aspect-square bg-rose-light">
-        <Image src={product.image} alt={product.name} fill sizes="(max-width:640px) 50vw,(max-width:1024px) 33vw,25vw"
+        <ProductImage src={product.image} alt={product.name} fill sizes="(max-width:640px) 50vw,(max-width:1024px) 33vw,25vw"
           className="object-cover hover:scale-105 transition-transform duration-300" priority={priority} />
         {badge && <span className={`absolute top-2 left-2 text-[10px] font-bold px-2 py-1 rounded-full ${badge.className}`}>{badge.label}</span>}
         <span className="absolute top-2 right-2 bg-rose-DEFAULT text-white text-xs font-bold px-2 py-1 rounded-full">-{product.discount}%</span>

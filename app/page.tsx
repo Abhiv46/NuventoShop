@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
+import ProductImage from '@/components/ProductImage';
 import { Star, ArrowRight, Sparkles, TrendingUp, Zap } from 'lucide-react';
 import { products, categories, getFeaturedProducts, getProductsByCategory, getCategoryProductCount } from '@/lib/data';
 import ProductCard from '@/components/ProductCard';
@@ -49,7 +49,7 @@ export default function HomePage() {
           <div className="hidden md:grid grid-cols-2 gap-4">
             {featured.slice(0, 4).map((p, i) => (
               <Link key={p.id} href={`/products/${p.id}`} className={`relative rounded-2xl overflow-hidden shadow-lg group ${i===0?'col-span-2':''}`} style={{ aspectRatio: i===0?'2/1':'1/1' }}>
-                <Image src={p.image} alt={p.name} fill className="object-cover group-hover:scale-105 transition-transform duration-300" priority={i===0} />
+                <ProductImage src={p.image} alt={p.name} fill className="object-cover group-hover:scale-105 transition-transform duration-300" priority={i===0} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-3 left-3 text-white">
                   <p className="text-xs opacity-80">{p.brand}</p>
@@ -73,7 +73,7 @@ export default function HomePage() {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {categories.map((cat) => (
             <Link key={cat.id} href={`/category/${cat.slug}`} className="group relative rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md aspect-[4/3]">
-              <Image src={cat.image} alt={cat.name} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+              <ProductImage src={cat.image} alt={cat.name} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
               <div className="absolute bottom-3 left-3 text-white">
                 <div className="text-xl mb-0.5">{cat.emoji}</div>

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
+import ProductImage from '@/components/ProductImage';
 import Link from 'next/link';
 import { Star, Shield, Truck, RotateCcw, ExternalLink, Zap, ChevronRight } from 'lucide-react';
 import { getProductById, getRelatedProducts, sourceLabels, products } from '@/lib/data';
@@ -79,7 +79,7 @@ export default function ProductDetailPage({ params }: Props) {
           {/* Left: Image */}
           <div className="lg:col-span-1">
             <div className="relative rounded-2xl overflow-hidden bg-rose-light aspect-square shadow-md">
-              <Image
+              <ProductImage
                 src={product.image}
                 alt={product.name}
                 fill
