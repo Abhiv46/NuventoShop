@@ -24,7 +24,7 @@ export const products: Product[] = [
   {
     id:'p001', name:"Lakme Absolute Skin Natural Mousse SPF 45 Foundation", brand:'Lakme',
     price:549, originalPrice:849, discount:35, rating:4.3, reviews:12840,
-    image:'https://images.unsplash.com/photo-1631214524020-3c69b7a9f483?w=400&q=80',
+    image:'https://images.unsplash.com/photo-1560879311-370fd4561a0d?w=400&q=80',
     category:'beauty', tags:['foundation','makeup','SPF','lakme','skin'],
     description:'Lightweight mousse foundation with SPF 45 protection. Natural skin-like finish perfect for Indian skin tones with full coverage.',
     features:['SPF 45 sun protection','Lightweight mousse formula','12 shades for Indian skin','Full coverage finish','Long-lasting up to 12 hours'],
