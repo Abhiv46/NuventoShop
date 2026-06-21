@@ -7,15 +7,14 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-24 text-center">
-      <p className="text-6xl mb-4">⚠️</p>
-      <h1 className="text-3xl font-bold mb-2">Something went wrong</h1>
-      <p className="text-gray-500 mb-8">We're sorry, an unexpected error occurred. Please try again.</p>
+      <h1 className="font-display text-3xl font-semibold text-ink mb-2">Something went wrong</h1>
+      <p className="text-ink-soft mb-8">We're sorry, an unexpected error occurred. Please try again.</p>
       <div className="flex gap-3 justify-center">
-        <button onClick={() => reset()} className="rose-gradient text-white font-semibold px-6 py-3 rounded-full hover:opacity-90">
-          Try Again
+        <button onClick={() => reset()} className="bg-ink text-ivory font-medium px-6 py-3 rounded-full hover:bg-terracotta transition-colors">
+          Try again
         </button>
-        <Link href="/" className="border-2 border-rose-DEFAULT text-rose-DEFAULT font-semibold px-6 py-3 rounded-full hover:bg-rose-light">
-          Go Home
+        <Link href="/" className="border border-ink/20 text-ink font-medium px-6 py-3 rounded-full hover:border-ink transition-colors">
+          Go home
         </Link>
       </div>
     </div>
