@@ -19,7 +19,7 @@ export default function ProductCard({ product, priority = false }: { product: Pr
     <article className="product-card bg-white rounded-xl overflow-hidden border border-stone-dark flex flex-col h-full">
       <Link href={`/products/${product.id}`} className="relative block overflow-hidden aspect-square bg-stone">
         <ProductImage src={product.image} alt={product.name} fill sizes="(max-width:640px) 50vw,(max-width:1024px) 33vw,25vw"
-          className="object-cover hover:scale-105 transition-transform duration-300" priority={priority} />
+          className="product-img object-cover" priority={priority} />
         {badge && <span className={`absolute top-2 left-2 text-[10px] font-semibold px-2 py-1 rounded-full ${badge.className}`}>{badge.label}</span>}
         <span className="absolute top-2 right-2 bg-ivory/95 text-terracotta text-xs font-semibold px-2 py-1 rounded-full">-{product.discount}%</span>
       </Link>
@@ -40,7 +40,7 @@ export default function ProductCard({ product, priority = false }: { product: Pr
         </div>
         <div className="flex-1" />
         <a href={product.affiliateUrl} target="_blank" rel="noopener noreferrer sponsored"
-          className="flex items-center justify-center gap-1.5 w-full py-2.5 rounded-lg text-ivory text-sm font-medium hover:opacity-90 active:scale-[0.98] transition-all"
+          className="btn-press flex items-center justify-center gap-1.5 w-full py-2.5 rounded-lg text-ivory text-sm font-medium hover:opacity-90 transition-all"
           style={{ backgroundColor: src.color }} aria-label={`Buy ${product.name} on ${src.label}`}>
           View on {src.label} <ArrowUpRight size={14} />
         </a>

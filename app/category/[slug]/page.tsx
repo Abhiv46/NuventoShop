@@ -2,6 +2,7 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import ProductImage from '@/components/ProductImage';
+import Reveal from '@/components/Reveal';
 import { getCategoryBySlug, getProductsByCategory, getCategoryProductCount, categories } from '@/lib/data';
 import ProductCard from '@/components/ProductCard';
 import { AdBanner, AdInFeed } from '@/components/AdSense';
@@ -55,7 +56,7 @@ export default function CategoryPage({ params }: Props) {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {items.map((p, i) => (
             <React.Fragment key={p.id}>
-              <ProductCard product={p} priority={i < 8} />
+              <Reveal delay={(i % 8) * 50}><ProductCard product={p} priority={i < 8} /></Reveal>
               {i === 7 && (
                 <div className="col-span-2 sm:col-span-3 lg:col-span-4">
                   <AdInFeed />

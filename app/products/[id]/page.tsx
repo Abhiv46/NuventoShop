@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Star, Shield, Truck, RotateCcw, ArrowUpRight, ChevronRight } from 'lucide-react';
 import { getProductById, getRelatedProducts, sourceLabels, products } from '@/lib/data';
 import ProductCard from '@/components/ProductCard';
+import Reveal from '@/components/Reveal';
 import { AdSidebar, AdInFeed } from '@/components/AdSense';
 
 interface Props { params: { id: string } }
@@ -76,7 +77,7 @@ export default function ProductDetailPage({ params }: Props) {
         </nav>
 
         <div className="grid lg:grid-cols-3 gap-10">
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 animate-fade-up">
             <div className="relative rounded-xl overflow-hidden bg-stone aspect-square border border-stone-dark">
               <ProductImage
                 src={product.image}
@@ -100,7 +101,7 @@ export default function ProductDetailPage({ params }: Props) {
             </div>
           </div>
 
-          <div className="lg:col-span-1 space-y-5">
+          <div className="lg:col-span-1 space-y-5 animate-fade-up" style={{ animationDelay: '.1s', animationFillMode: 'backwards' }}>
             <div>
               <span className="text-xs font-semibold text-terracotta uppercase tracking-widest">{product.brand}</span>
               <h1 className="font-display text-2xl font-semibold text-ink mt-1 leading-snug">{product.name}</h1>
@@ -154,7 +155,7 @@ export default function ProductDetailPage({ params }: Props) {
             </div>
           </div>
 
-          <div className="lg:col-span-1 space-y-4">
+          <div className="lg:col-span-1 space-y-4 animate-fade-up" style={{ animationDelay: '.2s', animationFillMode: 'backwards' }}>
             <div className="bg-white rounded-xl border border-stone-dark p-6 sticky top-24 space-y-5">
               <div className="text-center">
                 <p className="text-ink-soft text-sm mb-1">Available on</p>
@@ -171,7 +172,7 @@ export default function ProductDetailPage({ params }: Props) {
                 href={product.affiliateUrl}
                 target="_blank"
                 rel="noopener noreferrer sponsored"
-                className="flex items-center justify-center gap-2 w-full py-4 rounded-lg text-ivory text-base font-medium transition-all hover:opacity-90 active:scale-[0.98]"
+                className="btn-press btn-sheen flex items-center justify-center gap-2 w-full py-4 rounded-lg text-ivory text-base font-medium transition-all hover:opacity-90"
                 style={{ backgroundColor: src.color }}
               >
                 View on {src.label}
@@ -208,13 +209,31 @@ export default function ProductDetailPage({ params }: Props) {
             <h2 className="font-display text-2xl font-semibold text-ink mb-6">You may also like</h2>
             <AdInFeed className="mb-6" />
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-              {related.map((p) => (
-                <ProductCard key={p.id} product={p} />
+              {related.map((p, i) => (
+                <Reveal key={p.id} delay={i * 60}><ProductCard product={p} /></Reveal>
               ))}
             </div>
           </section>
         )}
       </div>
+
+      {/* Mobile sticky buy bar — desktop already has the sidebar CTA in view */}
+      <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-stone-dark px-4 py-3 flex items-center gap-3 shadow-[0_-4px_16px_rgba(28,20,16,0.08)]">
+        <div className="flex-1 min-w-0">
+          <p className="font-mono-price font-semibold text-ink text-lg leading-none">₹{product.price.toLocaleString('en-IN')}</p>
+          <p className="text-xs text-jewel font-medium mt-0.5">Save ₹{savings.toLocaleString('en-IN')}</p>
+        </div>
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="noopener noreferrer sponsored"
+          className="btn-press flex items-center justify-center gap-1.5 px-6 py-3 rounded-full text-ivory text-sm font-medium flex-shrink-0"
+          style={{ backgroundColor: src.color }}
+        >
+          View on {src.label}
+        </a>
+      </div>
+      <div className="lg:hidden h-20" aria-hidden="true" />
     </>
   );
 }

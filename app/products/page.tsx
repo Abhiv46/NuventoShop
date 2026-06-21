@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Search } from 'lucide-react';
 import { products, categories } from '@/lib/data';
 import ProductCard from '@/components/ProductCard';
+import Reveal from '@/components/Reveal';
 import { AdBanner, AdInFeed } from '@/components/AdSense';
 
 export const metadata: Metadata = { title: 'All Products – Best Deals for Women', description: 'Browse all curated products at best prices.' };
@@ -48,7 +49,7 @@ export default function ProductsPage({ searchParams }: { searchParams: { filter?
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {filtered.map((p, i) => (
             <React.Fragment key={p.id}>
-              <ProductCard product={p} priority={i < 8} />
+              <Reveal delay={(i % 8) * 50}><ProductCard product={p} priority={i < 8} /></Reveal>
               {i === 7 && (
                 <div className="col-span-2 sm:col-span-3 lg:col-span-4">
                   <AdInFeed />

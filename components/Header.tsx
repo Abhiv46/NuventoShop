@@ -43,7 +43,7 @@ export default function Header() {
           </form>
 
           <div className="flex items-center gap-3">
-            <Link href="/products" className="hidden sm:flex items-center gap-1.5 text-sm font-medium bg-terracotta text-ivory px-4 py-2 rounded-full hover:bg-terracotta-dark transition-colors">
+            <Link href="/products" className="btn-press hidden sm:flex items-center gap-1.5 text-sm font-medium bg-terracotta text-ivory px-4 py-2 rounded-full hover:bg-terracotta-dark transition-colors">
               <ShoppingBag size={16} /> Shop All
             </Link>
             <button onClick={() => setMobileOpen(!mobileOpen)} className="md:hidden p-2 rounded-lg hover:bg-stone" aria-label="Toggle menu">
@@ -60,7 +60,8 @@ export default function Header() {
             </button>
             {catOpen && (
               <div onMouseEnter={() => setCatOpen(true)} onMouseLeave={() => setCatOpen(false)}
-                className="absolute top-full left-0 bg-white rounded-xl shadow-xl border border-stone p-3 min-w-[220px] z-50">
+                className="absolute top-full left-0 bg-white rounded-xl shadow-xl border border-stone p-3 min-w-[220px] z-50 origin-top-left"
+                style={{ animation: 'fadeUp .2s cubic-bezier(.2,.8,.2,1)' }}>
                 {categories.map((cat) => (
                   <Link key={cat.id} href={`/category/${cat.slug}`}
                     className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-jewel-light hover:text-jewel text-sm">
@@ -80,7 +81,7 @@ export default function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden bg-ivory border-t border-stone px-4 py-4 space-y-4 shadow-lg animate-fade-up">
+        <div className="md:hidden bg-ivory border-t border-stone px-4 py-4 space-y-4 shadow-lg reveal reveal-visible" style={{ transitionDuration: '.3s' }}>
           <form onSubmit={handleSearch} className="flex rounded-full overflow-hidden border border-stone-dark bg-white">
             <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search products..."
               className="flex-1 px-4 py-2 text-sm outline-none bg-transparent" />

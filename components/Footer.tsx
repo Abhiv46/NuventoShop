@@ -19,7 +19,7 @@ export default function Footer() {
             <form onSubmit={(e) => { e.preventDefault(); setSubscribed(true); }} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <input type="email" required placeholder="Enter your email" aria-label="Email"
                 className="flex-1 px-4 py-3 rounded-full text-ink text-sm outline-none bg-ivory" />
-              <button type="submit" className="bg-terracotta text-ivory font-medium px-6 py-3 rounded-full hover:bg-terracotta-dark transition-colors">
+              <button type="submit" className="btn-press bg-terracotta text-ivory font-medium px-6 py-3 rounded-full hover:bg-terracotta-dark transition-colors">
                 Subscribe
               </button>
             </form>
