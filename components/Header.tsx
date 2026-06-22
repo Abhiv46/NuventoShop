@@ -81,7 +81,7 @@ export default function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden bg-ivory border-t border-stone px-4 py-4 space-y-4 shadow-lg reveal reveal-visible" style={{ transitionDuration: '.3s' }}>
+        <div className="md:hidden bg-ivory border-t border-stone px-4 py-4 space-y-4 shadow-lg animate-fade-up">
           <form onSubmit={handleSearch} className="flex rounded-full overflow-hidden border border-stone-dark bg-white">
             <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search products..."
               className="flex-1 px-4 py-2 text-sm outline-none bg-transparent" />

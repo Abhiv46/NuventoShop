@@ -166,7 +166,7 @@ export default function HomePage() {
       </section>
 
       <section className="bg-ink text-ivory py-16 px-4">
-        <Reveal className="max-w-5xl mx-auto text-center" as="div">
+        <Reveal className="max-w-5xl mx-auto text-center">
           <Sparkles size={22} className="mx-auto mb-4 text-turmeric" />
           <h2 className="font-display text-3xl font-semibold mb-3">How we pick</h2>
           <p className="text-ivory/65 mb-10 max-w-md mx-auto">No algorithms, no sponsored placements — just products we'd actually recommend to a friend.</p>
