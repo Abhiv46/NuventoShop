@@ -28,7 +28,7 @@ export default function HomePage() {
   return (
     <>
       <section className="relative overflow-hidden bg-ivory py-16 sm:py-20 px-4 border-b border-stone">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start">
           <div className="space-y-6 animate-fade-up">
             <LiveIndicator />
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.08] text-ink">
@@ -49,6 +49,21 @@ export default function HomePage() {
               <span className="inline-flex items-center gap-1.5"><ShieldCheck size={15} className="text-jewel" /> Verified links</span>
               <span className="inline-flex items-center gap-1.5"><SearchIcon size={15} className="text-jewel" /> Price-checked</span>
               <span className="inline-flex items-center gap-1.5"><Clock3 size={15} className="text-jewel" /> Updated weekly</span>
+            </div>
+
+            <div className="flex flex-wrap gap-8 pt-6 border-t border-stone">
+              <div>
+                <p className="font-display text-2xl sm:text-3xl font-semibold text-jewel-dark">12,400+</p>
+                <p className="text-xs text-ink-soft mt-0.5">Happy customers</p>
+              </div>
+              <div>
+                <p className="font-display text-2xl sm:text-3xl font-semibold text-jewel-dark">4.7★</p>
+                <p className="text-xs text-ink-soft mt-0.5">Average rating</p>
+              </div>
+              <div>
+                <p className="font-display text-2xl sm:text-3xl font-semibold text-jewel-dark">₹499+</p>
+                <p className="text-xs text-ink-soft mt-0.5">Free shipping</p>
+              </div>
             </div>
           </div>
 
