@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import ProductImage from './ProductImage';
+import TagBadge from './TagBadge';
+import WishlistButton from './WishlistButton';
+import SocialProof from './SocialProof';
 import { Star, ArrowUpRight } from 'lucide-react';
 import type { Product } from '@/lib/data';
 import { sourceLabels } from '@/lib/data';
@@ -12,7 +15,7 @@ const badgeConfig: Record<string, { label: string; className: string }> = {
 };
 
 export default function ProductCard({ product, priority = false }: { product: Product; priority?: boolean }) {
-  const src = sourceLabels[product.affiliateSource] ?? { label: 'Buy Now', color: '#B6452C' };
+  const src = sourceLabels[product.affiliateSource] ?? { label: 'Buy Now', color: '#B3164C' };
   const badge = product.badge ? badgeConfig[product.badge] : null;
 
   return (
@@ -20,8 +23,8 @@ export default function ProductCard({ product, priority = false }: { product: Pr
       <Link href={`/products/${product.id}`} className="relative block overflow-hidden aspect-square bg-stone">
         <ProductImage src={product.image} alt={product.name} fill sizes="(max-width:640px) 50vw,(max-width:1024px) 33vw,25vw"
           className="product-img object-cover" priority={priority} />
-        {badge && <span className={`absolute top-2 left-2 text-[10px] font-semibold px-2 py-1 rounded-full ${badge.className}`}>{badge.label}</span>}
-        <span className="absolute top-2 right-2 bg-ivory/95 text-terracotta text-xs font-semibold px-2 py-1 rounded-full">-{product.discount}%</span>
+        <TagBadge label={badge ? badge.label : `-${product.discount}%`} />
+        <WishlistButton productName={product.name} />
       </Link>
       <div className="p-3 flex flex-col flex-1 gap-1.5">
         <span className="text-[11px] font-semibold text-terracotta uppercase tracking-wide">{product.brand}</span>
@@ -38,6 +41,7 @@ export default function ProductCard({ product, priority = false }: { product: Pr
           <span className="text-base font-semibold text-ink">₹{product.price.toLocaleString('en-IN')}</span>
           <span className="text-xs text-ink-soft/60 line-through">₹{product.originalPrice.toLocaleString('en-IN')}</span>
         </div>
+        <SocialProof productId={product.id} />
         <div className="flex-1" />
         <a href={product.affiliateUrl} target="_blank" rel="noopener noreferrer sponsored"
           className="btn-press flex items-center justify-center gap-1.5 w-full py-2.5 rounded-lg text-ivory text-sm font-medium hover:opacity-90 transition-all"

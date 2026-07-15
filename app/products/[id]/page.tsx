@@ -5,6 +5,9 @@ import Link from 'next/link';
 import { Star, Shield, Truck, RotateCcw, ArrowUpRight, ChevronRight } from 'lucide-react';
 import { getProductById, getRelatedProducts, sourceLabels, products } from '@/lib/data';
 import ProductCard from '@/components/ProductCard';
+import TagBadge from '@/components/TagBadge';
+import SocialProof from '@/components/SocialProof';
+import WishlistButton from '@/components/WishlistButton';
 import Reveal from '@/components/Reveal';
 import { AdSidebar, AdInFeed } from '@/components/AdSense';
 
@@ -39,7 +42,7 @@ export default function ProductDetailPage({ params }: Props) {
   if (!product) notFound();
 
   const related = getRelatedProducts(product);
-  const src = sourceLabels[product.affiliateSource] ?? { label: 'Buy Now', color: '#B6452C' };
+  const src = sourceLabels[product.affiliateSource] ?? { label: 'Buy Now', color: '#B3164C' };
   const savings = product.originalPrice - product.price;
 
   const jsonLd = {
@@ -86,14 +89,8 @@ export default function ProductDetailPage({ params }: Props) {
                 className="object-cover"
                 priority
               />
-              {product.badge && (
-                <span className="absolute top-3 left-3 bg-terracotta text-ivory text-xs font-semibold px-3 py-1 rounded-full">
-                  {badgeLabel[product.badge]}
-                </span>
-              )}
-              <span className="absolute top-3 right-3 bg-ivory text-terracotta text-sm font-semibold px-3 py-1 rounded-full">
-                -{product.discount}%
-              </span>
+              <TagBadge label={product.badge ? badgeLabel[product.badge] : `-${product.discount}%`} />
+              <WishlistButton productName={product.name} />
             </div>
 
             <div className="mt-4 hidden lg:block">
@@ -123,6 +120,7 @@ export default function ProductDetailPage({ params }: Props) {
               <p className="text-jewel font-medium text-sm">
                 You save ₹{savings.toLocaleString('en-IN')} ({product.discount}% off)
               </p>
+              <SocialProof productId={product.id} />
             </div>
 
             <div>

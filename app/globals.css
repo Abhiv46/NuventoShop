@@ -5,18 +5,18 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { font-family: 'Inter', system-ui, sans-serif; background: #FAF6EE; color: #1C1410; -webkit-font-smoothing: antialiased; }
+body { font-family: 'Inter', system-ui, sans-serif; background: #FFF6F2; color: #2B1420; -webkit-font-smoothing: antialiased; }
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-thumb { background: #B6452C; border-radius: 3px; }
-::selection { background: #B6452C; color: #FAF6EE; }
+::-webkit-scrollbar-thumb { background: #B3164C; border-radius: 3px; }
+::selection { background: #B3164C; color: #FFF6F2; }
 
-:focus-visible { outline: 2px solid #B6452C; outline-offset: 2px; border-radius: 2px; }
+:focus-visible { outline: 2px solid #B3164C; outline-offset: 2px; border-radius: 2px; }
 
 .font-display { font-family: 'Fraunces', serif; font-optical-sizing: auto; }
 .font-mono-price { font-family: 'JetBrains Mono', monospace; }
 
-.gradient-text { background: linear-gradient(115deg,#B6452C,#C99A3B); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-.rose-gradient { background: linear-gradient(135deg,#B6452C,#8C3220); }
+.gradient-text { background: linear-gradient(115deg,#B3164C,#E8A33D); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.rose-gradient { background: linear-gradient(135deg,#B3164C,#7E0E37); }
 
 /* Signature: hand-stamped block-print style border */
 .stamp-border { position: relative; }
@@ -42,7 +42,7 @@ body { font-family: 'Inter', system-ui, sans-serif; background: #FAF6EE; color: 
 .product-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 18px 36px -12px rgba(28,20,16,.18);
-  border-color: #B6452C;
+  border-color: #B3164C;
 }
 .product-card .product-img { transition: transform .6s cubic-bezier(.2,.8,.2,1); }
 .product-card:hover .product-img { transform: scale(1.06); }
@@ -91,7 +91,7 @@ body { font-family: 'Inter', system-ui, sans-serif; background: #FAF6EE; color: 
 
 @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
 .skeleton {
-  background: linear-gradient(90deg, #F1E9D8 25%, #E8E1D3 37%, #F1E9D8 63%);
+  background: linear-gradient(90deg, #F5E6DE 25%, #EAD3C8 37%, #F5E6DE 63%);
   background-size: 200% 100%;
   animation: shimmer 1.6s ease-in-out infinite;
 }
@@ -108,4 +108,34 @@ body { font-family: 'Inter', system-ui, sans-serif; background: #FAF6EE; color: 
   .product-card .product-img { transition: none; }
 }
 
-.adsense-box { min-height:90px; background:#F1E9D8; border:1px dashed #D8CDB8; border-radius:10px; display:flex; align-items:center; justify-content:center; }
+.adsense-box { min-height:90px; background:#F5E6DE; border:1px dashed #E0C4B8; border-radius:10px; display:flex; align-items:center; justify-content:center; }
+
+/* Signature: fabric price-tag discount badge — echoes the kurta/saree tags themselves */
+.tag-badge {
+  position: absolute; top: 10px; left: -6px; z-index: 10;
+  background: #B3164C; color: #FFF6F2;
+  padding: 5px 12px 5px 18px; font-size: 11px; font-weight: 700;
+  letter-spacing: .01em; border-radius: 0 6px 6px 0;
+  transform: rotate(-3deg);
+  box-shadow: 2px 3px 6px rgba(43,20,32,.18);
+}
+.tag-badge::before {
+  content: ''; position: absolute; left: 5px; top: 50%; transform: translateY(-50%);
+  width: 5px; height: 5px; border-radius: 50%; background: #FFF6F2;
+  border: 1px solid rgba(255,255,255,.6);
+}
+.tag-badge::after {
+  content: ''; position: absolute; left: -6px; top: 50%; transform: translateY(-50%);
+  border-style: solid; border-width: 12px 6px 12px 0;
+  border-color: transparent #B3164C transparent transparent;
+}
+.tag-badge.tag-badge-dark { background:#2B1420; }
+.tag-badge.tag-badge-dark::after { border-color: transparent #2B1420 transparent transparent; }
+
+/* Live/urgency pulse dot */
+@keyframes livePulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.4; transform:scale(1.5); } }
+.pulse-dot { width:7px; height:7px; border-radius:50%; background:#B3164C; display:inline-block; animation: livePulse 1.6s infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-dot { animation: none !important; }
+}

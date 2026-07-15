@@ -5,6 +5,11 @@ import Reveal from '@/components/Reveal';
 import { ArrowRight, ShieldCheck, Search as SearchIcon, Clock3, Sparkles } from 'lucide-react';
 import { products, categories, getFeaturedProducts, getProductsByCategory, getCategoryProductCount } from '@/lib/data';
 import ProductCard from '@/components/ProductCard';
+import TagBadge from '@/components/TagBadge';
+import TrustBar from '@/components/TrustBar';
+import LiveIndicator from '@/components/LiveIndicator';
+import DealCountdown from '@/components/DealCountdown';
+import Testimonials from '@/components/Testimonials';
 import { AdBanner, AdInFeed } from '@/components/AdSense';
 
 export const metadata: Metadata = {
@@ -25,9 +30,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-ivory py-16 sm:py-20 px-4 border-b border-stone">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-up">
-            <div className="inline-flex items-center gap-2 text-terracotta text-sm font-semibold tracking-wide uppercase">
-              <span className="w-6 h-px bg-terracotta" /> Hand-picked, not algorithm-generated
-            </div>
+            <LiveIndicator />
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.08] text-ink">
               The good stuff,<br /><span className="gradient-text italic">already found</span> for you.
             </h1>
@@ -61,12 +64,14 @@ export default function HomePage() {
                   <p className="font-medium text-sm line-clamp-1">{p.name.split(' ').slice(0,4).join(' ')}</p>
                   <p className="text-xs font-mono-price font-semibold text-turmeric">₹{p.price.toLocaleString('en-IN')}</p>
                 </div>
-                <span className="absolute top-2 right-2 bg-terracotta text-ivory text-xs font-semibold px-2 py-0.5 rounded-full">-{p.discount}%</span>
+                <TagBadge label={`-${p.discount}%`} />
               </Link>
             ))}
           </div>
         </div>
       </section>
+
+      <TrustBar />
 
       <div className="marquee-row bg-ink py-3 overflow-hidden border-b border-ivory/10">
         <div className="marquee-track flex items-center gap-12 whitespace-nowrap w-max">
@@ -124,6 +129,16 @@ export default function HomePage() {
 
       <div className="max-w-7xl mx-auto px-4"><AdInFeed /></div>
 
+      <section className="bg-terracotta-dark text-ivory">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between flex-wrap gap-3">
+          <div className="flex items-center gap-2 text-sm font-medium">
+            <Clock3 size={16} className="text-turmeric" />
+            Today's deal window — prices refresh daily, grab these before they rotate
+          </div>
+          <DealCountdown />
+        </div>
+      </section>
+
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <Reveal className="flex items-end justify-between mb-7">
           <div>
@@ -164,6 +179,8 @@ export default function HomePage() {
           {fashion.map((p, i) => <Reveal key={p.id} delay={i * 60}><ProductCard product={p} /></Reveal>)}
         </div>
       </section>
+
+      <Testimonials />
 
       <section className="bg-ink text-ivory py-16 px-4">
         <Reveal className="max-w-5xl mx-auto text-center">

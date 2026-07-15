@@ -4,16 +4,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ivory: { DEFAULT:'#FAF6EE', dark:'#F1E9D8' },
-        ink: { DEFAULT:'#1C1410', soft:'#4A3F38' },
-        terracotta: { DEFAULT:'#B6452C', light:'#F3DDD3', dark:'#8C3220' },
-        jewel: { DEFAULT:'#2F5D50', light:'#E2EBE6', dark:'#203F37' },
-        turmeric: { DEFAULT:'#C99A3B', light:'#F6E9CB' },
-        stone: { DEFAULT:'#E8E1D3', dark:'#D8CDB8' },
+        ivory: { DEFAULT:'#FFF6F2', dark:'#F5E6DE' },
+        ink: { DEFAULT:'#2B1420', soft:'#6B5560' },
+        terracotta: { DEFAULT:'#B3164C', light:'#FFD9E8', dark:'#7E0E37' },
+        jewel: { DEFAULT:'#0F5C56', light:'#E4F1EF', dark:'#0A413D' },
+        turmeric: { DEFAULT:'#E8A33D', light:'#FDEBD2' },
+        stone: { DEFAULT:'#EAD3C8', dark:'#E0C4B8' },
         // legacy aliases (migrating off these gradually)
-        rose: { DEFAULT:'#B6452C', light:'#F3DDD3', dark:'#8C3220' },
-        cream: '#FAF6EE',
-        slate: { DEFAULT:'#1C1410', 600:'#4A3F38', 700:'#1C1410' },
+        rose: { DEFAULT:'#B3164C', light:'#FFD9E8', dark:'#7E0E37' },
+        cream: '#FFF6F2',
+        slate: { DEFAULT:'#2B1420', 600:'#6B5560', 700:'#2B1420' },
       },
       fontFamily: {
         display: ['Fraunces', 'serif'],
