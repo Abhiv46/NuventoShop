@@ -197,6 +197,9 @@ export const getProductById        = (id: string)  => products.find(p => p.id ==
 export const getProductsByCategory = (cat: string) => products.filter(p => p.category === cat);
 export const getCategoryBySlug     = (slug: string) => categories.find(c => c.slug === slug);
 export const getCategoryProductCount = (catId: string) => products.filter(p => p.category === catId).length;
+export const getCategoryMaxDiscount = (catId: string) => Math.max(0, ...products.filter(p => p.category === catId).map(p => p.discount));
+export const getMaxDiscount = () => Math.max(...products.map(p => p.discount));
+export const getUnderPriceProducts = (max: number) => products.filter(p => p.price < max);
 export const getFeaturedProducts   = () => products.filter(p => p.badge === 'bestseller' || p.badge === 'trending').slice(0, 8);
 export const getRelatedProducts    = (p: Product)  => products.filter(x => x.category === p.category && x.id !== p.id).slice(0, 4);
 export const searchProducts        = (q: string)   => {

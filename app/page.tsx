@@ -3,13 +3,14 @@ import Link from 'next/link';
 import ProductImage from '@/components/ProductImage';
 import Reveal from '@/components/Reveal';
 import { ArrowRight, ShieldCheck, Search as SearchIcon, Clock3, Sparkles } from 'lucide-react';
-import { products, categories, getFeaturedProducts, getProductsByCategory, getCategoryProductCount } from '@/lib/data';
+import { products, categories, getFeaturedProducts, getProductsByCategory, getCategoryProductCount, getCategoryMaxDiscount, getMaxDiscount, getUnderPriceProducts } from '@/lib/data';
 import ProductCard from '@/components/ProductCard';
 import TagBadge from '@/components/TagBadge';
 import TrustBar from '@/components/TrustBar';
 import LiveIndicator from '@/components/LiveIndicator';
 import DealCountdown from '@/components/DealCountdown';
 import Testimonials from '@/components/Testimonials';
+import { Flame, Percent } from 'lucide-react';
 import { AdBanner, AdInFeed } from '@/components/AdSense';
 
 export const metadata: Metadata = {
@@ -24,9 +25,19 @@ export default function HomePage() {
   const beauty   = getProductsByCategory('beauty').slice(0, 4);
   const fashion  = getProductsByCategory('fashion').slice(0, 4);
   const topDeals = products.filter((p) => p.badge === 'deal').slice(0, 4);
+  const under499 = getUnderPriceProducts(499).slice(0, 4);
+  const maxDiscount = getMaxDiscount();
 
   return (
     <>
+      <div className="rose-gradient text-ivory py-2.5 px-4 overflow-hidden">
+        <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 text-sm font-bold tracking-wide text-center flex-wrap">
+          <Flame size={16} className="text-turmeric flex-shrink-0" />
+          FLASH SALE — Up to {maxDiscount}% OFF sitewide, today only
+          <Flame size={16} className="text-turmeric flex-shrink-0" />
+        </div>
+      </div>
+
       <section className="relative overflow-hidden bg-ivory pt-20 pb-24 sm:pt-24 sm:pb-28 px-4">
         {/* decorative background shapes */}
         <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -123,19 +134,26 @@ export default function HomePage() {
           <Link href="/products" className="link-underline text-ink-soft text-sm font-semibold hover:text-terracotta flex items-center gap-1">View all <ArrowRight size={15} /></Link>
         </Reveal>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
-          {categories.map((cat, i) => (
+          {categories.map((cat, i) => {
+            const catDiscount = getCategoryMaxDiscount(cat.id);
+            return (
             <Reveal key={cat.id} delay={i * 60}>
               <Link href={`/category/${cat.slug}`} className="group relative rounded-2xl overflow-hidden shadow-[0_8px_24px_rgba(43,20,32,0.10)] hover:shadow-[0_16px_36px_rgba(43,20,32,0.18)] hover:-translate-y-1 transition-all duration-300 aspect-[4/3] block">
                 <ProductImage src={cat.image} alt={cat.name} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent" />
                 <span className="absolute top-3 left-3 w-9 h-9 rounded-full bg-white/95 flex items-center justify-center text-lg shadow-sm">{cat.emoji}</span>
+                {catDiscount > 0 && (
+                  <span className="absolute top-3 right-3 bg-terracotta text-ivory text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
+                    {catDiscount}% OFF
+                  </span>
+                )}
                 <div className="absolute bottom-4 left-4 text-ivory">
                   <p className="font-bold text-base">{cat.name.split('&')[0].trim()}</p>
                   <p className="text-xs opacity-80 mt-0.5">{getCategoryProductCount(cat.id) > 0 ? `${getCategoryProductCount(cat.id)}+ items` : 'Coming soon'}</p>
                 </div>
               </Link>
             </Reveal>
-          ))}
+          );})}
         </div>
       </section>
 
@@ -158,13 +176,26 @@ export default function HomePage() {
 
       <div className="max-w-7xl mx-auto px-4"><AdInFeed /></div>
 
-      <section className="bg-terracotta-dark text-ivory">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between flex-wrap gap-3">
-          <div className="flex items-center gap-2 text-sm font-medium">
-            <Clock3 size={16} className="text-turmeric" />
-            Today's deal window — prices refresh daily, grab these before they rotate
+      <section className="rose-gradient text-ivory">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between flex-wrap gap-4">
+          <div className="flex items-center gap-2.5 text-base font-bold">
+            <Flame size={20} className="text-turmeric flex-shrink-0" />
+            Today's deal window ends in
           </div>
           <DealCountdown />
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <Reveal className="flex items-end justify-between mb-8">
+          <div>
+            <span className="text-jewel text-xs font-bold tracking-wider uppercase inline-flex items-center gap-1"><Percent size={13} /> Budget picks</span>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-ink mt-1">Everything under ₹499</h2>
+          </div>
+          <Link href="/products" className="link-underline text-ink-soft text-sm font-semibold hover:text-jewel flex items-center gap-1">See all <ArrowRight size={15} /></Link>
+        </Reveal>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+          {under499.map((p, i) => <Reveal key={p.id} delay={i * 60}><ProductCard product={p} /></Reveal>)}
         </div>
       </section>
 
